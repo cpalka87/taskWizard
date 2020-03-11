@@ -1,6 +1,6 @@
 function objCleaner() {
   var variants = document.getElementById("variants").value;
-  variants = sliceArray(variants, 12)
+  variants = sliceArray(variants, 14)
     // document.getElementById("output").innerHTML = variants.toString();
   var result = [];
   var resultFinal = [];
