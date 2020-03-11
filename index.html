@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+    
+<h1 id ="intro">Task Wizard</h1>
+
+<div>
+    <label for="site">Site:</label>
+    
+    <p id="demo"></p>
+    
+    <select id="site">
+      <option value="DSMNY">DSMNY-E-FLASH</option>
+      <option value="Undefeated">Undefeated</option>
+      <option value="Kith">Kith</option>
+    </select>
+</div>
+
+<div>
+    <label for="mode">Mode:</label>
+    <select id="mode">
+      <option value="web">Safe</option>
+      <option value="wallets">Fast</option>
+      <option value="cpup">Cyborg 3.0</option>
+      <option value="cl">Checkout Link</option>
+    </select>
+</div>
+
+<div>
+    <label for="variants">Variants:</label>
+    <textarea id="variants" rows="25" cols="50" placeholder="Paste Variants Here">
+    </textarea> 
+    <button type="button" value="Submit" onclick="objCleaner()">Submit</button>
+</div>
+
+<div>
+    <label for="output">Output:</label>
+    <textarea id="output" rows="25" cols="50">
+    </textarea> 
+</div>
+<script src="lib.js"></script> 
+</body>
+</html>
