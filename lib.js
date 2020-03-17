@@ -65,3 +65,9 @@ function validate() {
   }
   objCleaner();
 }
+
+function clipBoard() {
+  var output = document.getElementById("output");
+  output.select();
+  document.execCommand("copy");
+}

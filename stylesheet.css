@@ -28,6 +28,12 @@ body {
     text-align: center;
 }
 
+.divider {
+    width: 100px;
+    height: auto;
+    display: inline-block;
+}
+
 .form-row {
     margin-top: 15px;
     margin-bottom: 200px;
