@@ -1,50 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="lib.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
   </head>
 <body>
-    
-<h1 id ="intro">Task Wizard</h1>
-
-<div>
-    <label for="site">Site:</label>
-    
-    <p id="demo"></p>
-    
-    <select id="site">
-      <option value="DSMNY">DSMNY-E-FLASH</option>
-      <option value="Undefeated">Undefeated</option>
-      <option value="Kith">Kith</option>
-      <option value="WishATL">WishATL</option>
-    </select>
-</div>
-
-<div>
-    <label for="mode">Mode:</label>
-    <select id="mode">
-      <option value="web">Safe</option>
-      <option value="wallets">Fast</option>
-      <option value="cbpup">Cyborg 3.0</option>
-      <option value="cl">Checkout Link</option>
-    </select>
-</div>
-
-<div>
-    <label for="varlength">Variant Length:</label>
-    <textarea id="varlength" rows="2" cols="5">1</textarea>
-</div>
-
-<div>
-    <label for="variants">Variants:</label>
-    <textarea id="variants" rows="25" cols="50" placeholder="Paste Variants Here"></textarea> 
-    <button type="button" value="Submit" onclick="validate()">Submit</button>
-</div>
-
-<div>
-    <label for="output">Output:</label>
-    <textarea id="output" rows="25" cols="50"></textarea> 
-</div>
  
+<h1 id ="title">DonkWizard</h1>
+
+
+
+<div class="container">
+
+  <form>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="site">Select Site</label>
+          <select class="form-control" id="site">
+            <option value="DSMNY">DSMNY-E-FLASH</option>
+            <option value="Undefeated">Undefeated</option>
+            <option value="Kith">Kith</option>
+            <option value="WishATL">WishATL</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mode">Select Mode</label>
+      <select multiple class="form-control" id="mode">
+        <option value="web">Safe</option>
+        <option value="wallets">Fast</option>
+        <option value="cbpup">Cyborg 3.0</option>
+        <option value="cl">Checkout Link</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="variants">Variant Length</label>
+      <textarea class="form-control" id="varlength" rows="3" placeholder="Please specify variant length"></textarea>
+    </div>
+    <div class="button">
+      <button type="button" class="btn-lg btn-primary" value="Submit" onclick="validate()">Submit</button>
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <label for="variants">Variants:</label>
+        <textarea class ="form-control" id="variants" rows="25" cols="50" placeholder="Paste Variants Here"></textarea> 
+      </div>
+      <div class="col">
+        <label for="output">Output:</label>
+        <textarea class="form-control" id="output" rows="25" cols="50" placeholder="Copy output and paste generated output into your .json file"></textarea> 
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="lib.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
 </body>
 </html>
