@@ -1,7 +1,11 @@
 function objCleaner() {
-  var variants = document.getElementById("variants").value;
-  variants = sliceArray(variants, 14)
-    // document.getElementById("output").innerHTML = variants.toString();
+  var variants = document.getElementById('variants').value;
+  if (variants.match(/(\r?\n|\r)/)) {
+    variants = variants.replace(/(\r?\n|\r)/g, '').split('');
+  } else {
+    variants = variants.split('');
+  }
+  variants = sliceArray(variants, Number(`${document.getElementById('varlength').value}`))
   var result = [];
   var resultFinal = [];
     for (var i = 0; i < variants.length; i++) {
@@ -11,7 +15,7 @@ function objCleaner() {
         "method": `${document.getElementById('mode').value}`,
         "url": null,
         "keywords": null,
-        "variant": `${variants}`,
+        "variant": variant,
         "size": null,
         "billing": "0",
         "proxyList": "none",
@@ -33,33 +37,31 @@ function objCleaner() {
         "titleInfo": `SKU: ${variant}\nMethod: ${document.getElementById('mode').value}`,
         "isShopify": true
       }
-      result.push(newObj);
+      result.push(newObj)
     }
   
   for (var i = 0; i < result.length; i++) {
     resultFinal.push(result[i]);
   }
   document.getElementById("output").innerHTML = JSON.stringify(resultFinal);
-// console.log(resultFinal)
 }
 
+// array slice helper function
 function sliceArray(array, size) {
-    var slicedArray = [];
-    for (var i = 0; i < array.length; i+= size) {
-      var sliceIt = array.slice(i, i + size);
-      slicedArray.push(sliceIt)
-    }
-    return slicedArray;
+  var slicedArray = [];
+  for (var i = 0; i < array.length; i+= size) {
+    var sliceIt = array.slice(i, i + size).join('');
+    slicedArray.push(sliceIt);
   }
+  return slicedArray;
+}
 
-// var myElement = document.getElementById("site");
-// document.getElementById("demo").innerHTML = 
-// "The text from the intro paragraph is " + myElement.innerHTML;
-
-// first argument is site name
-// second leave as is
-// third you can remove or enter:
-// 'cbpup' for Cyborg 3.0
-// 'web' for Safe
-// 'wallets' for Fast
-// 'cl' for Checkout Link
+// form validation
+function validate() {
+  var varLength = document.getElementById("varlength").value;
+  if (varLength == "") {
+      alert('Please enter a length!');
+      return false;
+  }
+  objCleaner();
+}

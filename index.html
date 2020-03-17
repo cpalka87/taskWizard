@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script src="lib.js"></script>
+  </head>
 <body>
     
 <h1 id ="intro">Task Wizard</h1>
@@ -28,17 +31,20 @@
 </div>
 
 <div>
+    <label for="varlength">Variant Length:</label>
+    <textarea id="varlength" rows="2" cols="5">1</textarea>
+</div>
+
+<div>
     <label for="variants">Variants:</label>
-    <textarea id="variants" rows="25" cols="50" placeholder="Paste Variants Here">
-    </textarea> 
-    <button type="button" value="Submit" onclick="objCleaner()">Submit</button>
+    <textarea id="variants" rows="25" cols="50" placeholder="Paste Variants Here"></textarea> 
+    <button type="button" value="Submit" onclick="validate()">Submit</button>
 </div>
 
 <div>
     <label for="output">Output:</label>
-    <textarea id="output" rows="25" cols="50">
-    </textarea> 
+    <textarea id="output" rows="25" cols="50"></textarea> 
 </div>
-<script src="lib.js"></script> 
+ 
 </body>
 </html>
