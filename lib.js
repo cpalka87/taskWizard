@@ -65,7 +65,7 @@ function validateVarLength() {
   }
   objCleaner();
 }
-
+// validate output contents
 function validateOutput() {
   var output = document.getElementById("output").value;
   if (output == "") {
