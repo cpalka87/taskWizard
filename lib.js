@@ -57,7 +57,7 @@ function sliceArray(array, size) {
 }
 
 // form validation
-function validate() {
+function validateVarLength() {
   var varLength = document.getElementById("varlength").value;
   if (varLength == "") {
       alert('Please enter a length!');
@@ -66,8 +66,44 @@ function validate() {
   objCleaner();
 }
 
+function validateOutput() {
+  var output = document.getElementById("output").value;
+  if (output == "") {
+    return false;
+  }
+  saveTextAsFile(output, "tasks.json");
+}
+
+// copy to clipboard function
 function clipBoard() {
   var output = document.getElementById("output");
   output.select();
   document.execCommand("copy");
 }
+
+// save file to local file system
+function saveTextAsFile(textToWrite, fileNameToSaveAs) {
+  if (textToWrite === undefined) {
+    return false
+  }
+  var textFileAsBlob = new Blob([textToWrite], {type:'application/json'});
+  var downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  if (window.webkitURL != null) {
+  // Chrome allows the link to be clicked
+  // without actually adding it to the DOM.
+  downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+  }
+  else {
+  // Firefox requires the link to be added to the DOM
+  // before it can be clicked.
+  downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+  downloadLink.onclick = destroyClickedElement;
+  downloadLink.style.display = "none";
+  document.body.appendChild(downloadLink);
+  }
+   
+  downloadLink.click();
+}
+

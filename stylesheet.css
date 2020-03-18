@@ -24,12 +24,12 @@ body {
     text-align: center;
 }
 
-.button {
-    text-align: center;
+.button-copy {
+    text-align: right;
 }
 
 .divider {
-    width: 100px;
+    width: 15px;
     height: auto;
     display: inline-block;
 }

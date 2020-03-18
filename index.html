@@ -41,11 +41,17 @@
       <label for="variants">Variant Length</label>
       <textarea class="form-control" id="varlength" rows="3" placeholder="Please specify variant length"></textarea>
     </div>
-    <div class="button">
-      <button type="button" class="btn-lg btn-primary" value="Submit" onclick="validate()">Submit</button>
-      <div class="divider"></div>
-      <button type="button" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button>
+    <div class="row">
+      <div class="col button-submit">
+        <button type="button" id="button-submit" class="btn-lg btn-primary" value="Submit" onclick="validateVarLength()">Submit</button>
+      </div>
+      <div class="col button-copy">
+        <button type="button" id="button-copy" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button>
+        <div class="divider"></div>
+        <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
+      </div>
     </div>
+      <!-- <button type="button" id="button-save" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button> -->
     <div class="form-row">
       <div class="col">
         <label for="variants">Variants:</label>
