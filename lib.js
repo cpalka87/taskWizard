@@ -1,5 +1,5 @@
 function objCleaner(length, siteName) {
-  var variants = document.getElementById('variants').value;
+  var variants = document.getElementById('variants-box').value;
   if (variants.match(/(\r?\n|\r)/)) {
     variants = variants.replace(/(\r?\n|\r)/g, '').split('');
   } else {
@@ -59,11 +59,10 @@ function sliceArray(array, size) {
 // form validation
 function validateSiteURL() {
   var siteURL = document.getElementById("site-url").value;
-  var variants = document.getElementById("variants").value;
+  var variants = document.getElementById("variants-box").value;
   if (siteURL == "" && variants !== "") {
-    console.log(variants.length)
      variants = variants.split('\n')
-     objCleaner(variants[0].length, 'FILL ME IN')
+     objCleaner(variants[0].length, variants[variants.length -1])
   } else if (siteURL == "" && variants == "") {
     alert('Please fill in either product URL or variants')
   }

@@ -38,56 +38,56 @@
           }
           
         }
-        $('#variants').text(items.join('\n'))
+        $('#variants-box').text(items.join('\n'))
         $('#size').text(size.join('\n'))
         objCleaner(length[0], siteName)
       });
     }
   }
+  
+  </script>
 
-    </script>
-    
-<h1 id ="title">DonkWizard</h1>
+    <h1 id ="title">DonkWizard</h1>
 
-
-
-<div class="container">
-    <div class="form-group">
-      <h2>VariantBuilder</h2>
-    <form>
-      <div class="form-group">
+    <div class="container">
+        <div class="form-group">
+          <h2>VariantBuilder</h2>
+        <form>
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label for="site-url">Insert product URL</label>
+                <textarea class="form-control" id="site-url" rows="1" placeholder="Paste product URL here"></textarea>
+              </div>
+            </div>
+          </div>
         <div class="row">
-          <div class="col">
-            <label for="site-url">Insert product URL</label>
-            <textarea class="form-control" id="site-url" rows="1" placeholder="Paste product URL here"></textarea>
+          <div class="col button-url-submit">
+            <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="validateSiteURL()">Build</button>
+          </div>
+          <div class="col button-copy">
+            <button type="button" id="button-copy" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button>
+            <div class="divider"></div>
+            <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
           </div>
         </div>
-      </div>
-    <div class="row">
-      <div class="col button-url-submit">
-        <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="validateSiteURL()">Build</button>
-      </div>
-      <div class="col button-copy">
-        <button type="button" id="button-copy" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button>
-        <div class="divider"></div>
-        <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
-      </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="variants">Variants:</label>
+            <textarea class ="form-control" id="variants-box" rows="25" cols="10"></textarea> 
+          </div>
+          <div class="col">
+            <label for="size">Size:</label>
+            <textarea class ="form-control" id="size" rows="25" cols="10"></textarea> 
+          </div>
+          <div class="col">
+            <label for="output">Output:</label>
+            <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="form-row">
-      <div class="col">
-        <label for="variants">Variants:</label>
-        <textarea class ="form-control" id="variants" rows="25" cols="10" placeholder="Paste Variants Here"></textarea> 
-      </div>
-      <div class="col">
-        <label for="size">Size:</label>
-        <textarea class ="form-control" id="size" rows="25" cols="10"></textarea> 
-      </div>
-      <div class="col">
-        <label for="output">Output:</label>
-        <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
-      </div>
-    </div>
-  </form>
-</div>
-</body>
+    <script>$('#variants-box').attr('placeholder', 'Please format variants and site name below if building task' + '\n' + '\n' + '12345678912345' + '\n'+ '12345678912345' + '\n'+ '12345678912345' + '\n' + 'Undefeated');</script>
+
+  </body>
 </html>
