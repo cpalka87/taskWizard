@@ -5,15 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="lib.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   </head>
 <body>
- 
+ <script>
+  function variantBuilder() {
+    var productUrl = document.getElementById('site-url').value;
+    productUrl = productUrl.split('/');
+    var domain = productUrl[2]
+    var handle = productUrl[productUrl.length - 1];
+    console.log(productUrl)
+    console.log(domain)
+    console.log(handle)
+    $.getJSON(`https://${domain}/products.json`, function( data ) {  
+      var regex = new RegExp(`\\b(\\w*${handle}\\w*)\\b`)
+      var items = [];
+      for (var product in data) {
+        var currentProduct = data[product];
+        for (var i = 0; i < currentProduct.length; i++) {
+          for (var j = 0; j < currentProduct[i].variants.length; j++)
+          if (currentProduct[i].handle.match(regex)) {
+            
+            items.push(currentProduct[i].variants[j].id)
+          }
+        }
+        
+      }
+      console.log(items)
+      $('#variant-output').text(items.join('\n'))
+    });
+  }
+    </script>
+    
 <h1 id ="title">DonkWizard</h1>
 
 
 
 <div class="container">
-
+  <h2>Task Builder</h2>
   <form>
     <div class="form-group">
       <div class="row">
@@ -46,11 +76,10 @@
         <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
       </div>
     </div>
-      <!-- <button type="button" id="button-save" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button> -->
     <div class="form-row">
       <div class="col">
         <label for="variants">Variants:</label>
-        <textarea class ="form-control" id="variants" rows="25" cols="50" placeholder="Paste Variants Here"></textarea> 
+        <textarea class ="form-control" id="variants" rows="25" cols="50" placeholder="Paste Variants Here "></textarea> 
       </div>
       <div class="col">
         <label for="output">Output:</label>
@@ -60,8 +89,31 @@
   </form>
 </div>
 
-<script src="lib.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<div class ="container">
+  <h2>VariantBuilder</h2>
+  <form>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="site-url">Insert product URL</label>
+          <textarea class="form-control" id="site-url" rows="1" placeholder="Paste product URL here"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="variant-output">Copy variants below</label>
+          <textarea class="form-control" id="variant-output" rows="15"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col button-url-submit">
+      <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="variantBuilder()">Submit</button>
+    </div>
+  </form>
+</div>
+
 
 </body>
 </html>

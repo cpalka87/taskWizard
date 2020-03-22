@@ -107,3 +107,6 @@ function saveTextAsFile(textToWrite, fileNameToSaveAs) {
   downloadLink.click();
 }
 
+// variant builder section
+
+
