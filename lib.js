@@ -1,18 +1,19 @@
-function objCleaner() {
+function objCleaner(length, siteName) {
   var variants = document.getElementById('variants').value;
   if (variants.match(/(\r?\n|\r)/)) {
     variants = variants.replace(/(\r?\n|\r)/g, '').split('');
   } else {
     variants = variants.split('');
   }
-  variants = sliceArray(variants, Number(`${document.getElementById('varlength').value}`))
+  // variants = sliceArray(variants, Number(`${document.getElementById('varlength').value}`))
+  variants = sliceArray(variants, Number(length))
   var result = [];
   var resultFinal = [];
     for (var i = 0; i < variants.length; i++) {
       var variant = variants[i]
       var newObj = {
-        "site": `${document.getElementById('site').value}`,
-        "method": `${document.getElementById('mode').value}`,
+        "site": `${siteName}`,
+        "method": `web`,
         "url": null,
         "keywords": null,
         "variant": variant,
@@ -34,7 +35,7 @@ function objCleaner() {
         "dateOfBirth": null,
         "queueMode": true,
         "browserCheckout": null,
-        "titleInfo": `SKU: ${variant}\nMethod: ${document.getElementById('mode').value}`,
+        "titleInfo": `SKU: ${variant}\nMethod: Safe`,
         "isShopify": true
       }
       result.push(newObj)
@@ -57,13 +58,13 @@ function sliceArray(array, size) {
 }
 
 // form validation
-function validateVarLength() {
-  var varLength = document.getElementById("varlength").value;
-  if (varLength == "") {
-      alert('Please enter a length!');
+function validateSiteURL() {
+  var siteURL = document.getElementById("site-url").value;
+  if (siteURL == "") {
+      alert('Please enter product link!');
       return false;
   }
-  objCleaner();
+  variantBuilder();
 }
 // validate output contents
 function validateOutput() {
