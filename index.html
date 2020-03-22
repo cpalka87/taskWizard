@@ -19,27 +19,30 @@
     var length = [];
     var domain = productUrl[2]
     var handle = productUrl[productUrl.length - 1];
-    $.getJSON(`https://${domain}/products.json`, function( data ) {  
-      var regex = new RegExp(`\\b(\\w*${handle}\\w*)\\b`)
-      var items = [];
-      var size = [];
-      for (var product in data) {
-        var currentProduct = data[product];
-        for (var i = 0; i < currentProduct.length; i++) {
-          for (var j = 0; j < currentProduct[i].variants.length; j++)
-          if (currentProduct[i].handle.match(regex)) {
-            
-            items.push(currentProduct[i].variants[j].id)
-            size.push(currentProduct[i].variants[j].title)
-            length.push(currentProduct[0].variants[0].id.toString().length)
+    if (domain !== undefined) {
+
+      $.getJSON(`https://${domain}/products.json`, function( data ) {  
+        var regex = new RegExp(`\\b(\\w*${handle}\\w*)\\b`)
+        var items = [];
+        var size = [];
+        for (var product in data) {
+          var currentProduct = data[product];
+          for (var i = 0; i < currentProduct.length; i++) {
+            for (var j = 0; j < currentProduct[i].variants.length; j++)
+            if (currentProduct[i].handle.match(regex)) {
+              
+              items.push(currentProduct[i].variants[j].id)
+              size.push(currentProduct[i].variants[j].title)
+              length.push(currentProduct[0].variants[0].id.toString().length)
+            }
           }
+          
         }
-        
-      }
-      $('#variants').text(items.join('\n'))
-      $('#size').text(size.join('\n'))
-      objCleaner(length[0], siteName)
-    });
+        $('#variants').text(items.join('\n'))
+        $('#size').text(size.join('\n'))
+        objCleaner(length[0], siteName)
+      });
+    }
   }
 
     </script>

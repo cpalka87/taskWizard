@@ -5,7 +5,6 @@ function objCleaner(length, siteName) {
   } else {
     variants = variants.split('');
   }
-  // variants = sliceArray(variants, Number(`${document.getElementById('varlength').value}`))
   variants = sliceArray(variants, Number(length))
   var result = [];
   var resultFinal = [];
@@ -60,9 +59,13 @@ function sliceArray(array, size) {
 // form validation
 function validateSiteURL() {
   var siteURL = document.getElementById("site-url").value;
-  if (siteURL == "") {
-      alert('Please enter product link!');
-      return false;
+  var variants = document.getElementById("variants").value;
+  if (siteURL == "" && variants !== "") {
+    console.log(variants.length)
+     variants = variants.split('\n')
+     objCleaner(variants[0].length, 'FILL ME IN')
+  } else if (siteURL == "" && variants == "") {
+    alert('Please fill in either product URL or variants')
   }
   variantBuilder();
 }
