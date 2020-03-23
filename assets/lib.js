@@ -78,8 +78,8 @@ function validateOutput() {
 }
 
 // copy to clipboard function
-function clipBoard() {
-  var output = document.getElementById("output");
+function clipBoard(tag) {
+  var output = document.getElementById(`${tag}`);
   output.select();
   document.execCommand("copy");
 }

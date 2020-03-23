@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheet.css">
-    <script src="lib.js"></script>
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheet.css">
+    <script src="assets/lib.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   </head>
 <body>
@@ -50,7 +51,6 @@
     <h1 id ="title">DonkWizard</h1>
 
     <div class="container">
-        <div class="form-group">
           <h2>VariantBuilder</h2>
         <form>
           <div class="form-group">
@@ -61,32 +61,41 @@
               </div>
             </div>
           </div>
-        <div class="row">
-          <div class="col button-url-submit">
-            <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="validateSiteURL()">Build</button>
-          </div>
-          <div class="col button-copy">
-            <button type="button" id="button-copy" class="btn-lg btn-primary" onclick="clipBoard()">Copy</button>
-            <div class="divider"></div>
-            <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col">
-            <label for="variants">Variants:</label>
-            <textarea class ="form-control" id="variants-box" rows="25" cols="10"></textarea> 
-          </div>
-          <div class="col">
-            <label for="size">Size:</label>
-            <textarea class ="form-control" id="size" rows="25" cols="10"></textarea> 
-          </div>
-          <div class="col">
-            <label for="output">Output:</label>
-            <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
+          <div class="row">
+            <div class="col button-url-submit">
+              <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="validateSiteURL()">Build</button>
+            </div>
+            <div class="col button-copy">
+              <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+        <div class="container">
+          <div class="form-row">
+            <div class="col">
+              <label for="variants">Variants:</label>
+              <span class="copy-icon" onclick="clipBoard('variants-box')">
+                <i class="far fa-clipboard"></i>
+              </span> 
+              <textarea class ="form-control" id="variants-box" rows="25" cols="10"></textarea>
+            </div>
+            <div class="col">
+              <label for="size">Size:</label>
+              <span class="copy-icon" onclick="clipBoard('size')">
+                <i class="far fa-clipboard"></i>
+              </span> 
+              <textarea class ="form-control" id="size" rows="25" cols="10"></textarea> 
+            </div>
+            <div class="col">
+              <label for="output">Output:</label>
+              <span class="copy-icon" onclick="clipBoard('output')">
+                <i class="far fa-clipboard"></i>
+              </span> 
+              <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
+            </div>
+          </div>
+        </form>
+      </div>
     <script>$('#variants-box').attr('placeholder', 'Please format variants and site name below if building task' + '\n' + '\n' + '12345678912345' + '\n'+ '12345678912345' + '\n'+ '12345678912345' + '\n' + 'Undefeated');</script>
 
   </body>
