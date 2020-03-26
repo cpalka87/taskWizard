@@ -24,22 +24,36 @@
         var regex = new RegExp(`\\b(\\w*${handle}\\w*)\\b`)
         var items = [];
         var size = [];
+        var message = [];
+        var productName = ''
         for (var product in data) {
           var currentProduct = data[product];
           for (var i = 0; i < currentProduct.length; i++) {
             for (var j = 0; j < currentProduct[i].variants.length; j++)
             if (currentProduct[i].handle.match(regex)) {
-              
+              productName = currentProduct[i].handle;
+              message.push(currentProduct[i].variants[j].title.replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id)
               items.push(currentProduct[i].variants[j].id)
-              size.push(currentProduct[i].variants[j].title)
+              size.push(currentProduct[i].variants[j].title.replace(/[^0-9\.]+/g, ''))
               length.push(currentProduct[0].variants[0].id.toString().length)
             }
           }
           
         }
-        $('#variants-box').text(items.join('\n'))
-        $('#size').text(size.join('\n'))
+        var varMessage = items.join('\n');
+        var sizeMessage = size.join('\n');
+        var completeMessageBalko = message.join('\n');
+        var completeMessageNSB = items.join('\n');
+        completeMessageBalko = ('```' + completeMessageBalko + '```')
+        completeMessageNSB = ('```' + completeMessageNSB + '```')
+        productName = ('```' + productName + '```')
+        domain = ('```' + domain + '```')
+        $('#variants-box').text(varMessage)
+        $('#size').text(sizeMessage)
         taskBuilder()
+        webhookMessage(completeMessageBalko, domain, productName);
+        webhookMessage(completeMessageNSB, domain, productName);
+      
       });
     } 
   }
