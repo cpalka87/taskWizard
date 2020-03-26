@@ -1,11 +1,7 @@
-function objCleaner(length, siteName) {
+function taskBuilder() {
   var variants = document.getElementById('variants-box').value;
-  if (variants.match(/(\r?\n|\r)/)) {
-    variants = variants.replace(/(\r?\n|\r)/g, '').split('');
-  } else {
-    variants = variants.split('');
-  }
-  variants = sliceArray(variants, Number(length))
+  variants = variants.split('\n');
+  var siteName = document.getElementById('site-box').value;
   var result = [];
   var resultFinal = [];
     for (var i = 0; i < variants.length; i++) {
@@ -49,10 +45,10 @@ function objCleaner(length, siteName) {
 // array slice helper function
 function sliceArray(array, size) {
   var slicedArray = [];
-  for (var i = 0; i < array.length; i+= size) {
-    var sliceIt = array.slice(i, i + size).join('');
-    slicedArray.push(sliceIt);
-  }
+    for (var i = 0; i < array.length; i+= size) {
+      var sliceIt = array.slice(i, i + size).join('');
+      slicedArray.push(sliceIt);
+    }
   return slicedArray;
 }
 
@@ -60,11 +56,14 @@ function sliceArray(array, size) {
 function validateSiteURL() {
   var siteURL = document.getElementById("site-url").value;
   var variants = document.getElementById("variants-box").value;
-  if (siteURL == "" && variants !== "") {
-     variants = variants.split('\n')
-     objCleaner(variants[0].length, variants[variants.length -1])
+  var siteBox = document.getElementById("site-box").value;
+  if (siteURL == "" && variants !== "" && siteBox !== "") {
+     taskBuilder()
+  } else if (variants !== "" && siteBox == "") {
+    alert("Please fill in site name to build task")
   } else if (siteURL == "" && variants == "") {
     alert('Please fill in either product URL or variants')
+
   }
   variantBuilder();
 }

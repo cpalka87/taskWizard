@@ -13,9 +13,7 @@
  <script>
   function variantBuilder() {
     var productUrl = document.getElementById('site-url').value;
-    var siteName = productUrl.split('.');
-    siteName = siteName[0].slice(8);
-    siteName = siteName.charAt(0).toUpperCase() + siteName.slice(1);
+    var siteName = document.getElementById('site-box').value;
     productUrl = productUrl.split('/');
     var length = [];
     var domain = productUrl[2]
@@ -41,9 +39,9 @@
         }
         $('#variants-box').text(items.join('\n'))
         $('#size').text(size.join('\n'))
-        objCleaner(length[0], siteName)
+        taskBuilder()
       });
-    }
+    } 
   }
   
   </script>
@@ -60,6 +58,12 @@
                 <textarea class="form-control" id="site-url" rows="1" placeholder="Paste product URL here"></textarea>
               </div>
             </div>
+              <div class="row">
+                <div class="col">
+                  <label for="site-box">Insert site name</label>
+                  <textarea class="form-control" id="site-box" rows="1" placeholder="Type site name exactly as it appears in task"></textarea>
+                </div>
+              </div>
           </div>
           <div class="row">
             <div class="col button-url-submit">
