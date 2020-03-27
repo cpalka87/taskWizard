@@ -32,9 +32,14 @@
             for (var j = 0; j < currentProduct[i].variants.length; j++)
             if (currentProduct[i].handle.match(regex)) {
               productName = currentProduct[i].handle;
-              message.push(currentProduct[i].variants[j].title.slice(0, 9).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
+              if ((currentProduct[i].variants[j].option1).match(/[0-9]/)) {
+                message.push(currentProduct[i].variants[j].option1.slice(0, 7).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
+                size.push(currentProduct[i].variants[j].option1.slice(0, 7).replace(/[^0-9\.]+/g, ''));
+              } else {
+                message.push(currentProduct[i].variants[j].option2.slice(0, 7).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
+                size.push(currentProduct[i].variants[j].option2.slice(0, 7).replace(/[^0-9\.]+/g, ''));
+              }
               items.push(currentProduct[i].variants[j].id);
-              size.push(currentProduct[i].variants[j].title.slice(0, 9).replace(/[^0-9\.]+/g, ''));
               length.push(currentProduct[0].variants[0].id.toString().length);
             }
           }
