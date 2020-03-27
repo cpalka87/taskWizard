@@ -32,9 +32,9 @@
             for (var j = 0; j < currentProduct[i].variants.length; j++)
             if (currentProduct[i].handle.match(regex)) {
               productName = currentProduct[i].handle;
-              message.push(currentProduct[i].variants[j].title.slice(0, 8).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
+              message.push(currentProduct[i].variants[j].title.slice(0, 9).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
               items.push(currentProduct[i].variants[j].id);
-              size.push(currentProduct[i].variants[j].title.slice(0, 8).replace(/[^0-9\.]+/g, ''));
+              size.push(currentProduct[i].variants[j].title.slice(0, 9).replace(/[^0-9\.]+/g, ''));
               length.push(currentProduct[0].variants[0].id.toString().length);
             }
           }
