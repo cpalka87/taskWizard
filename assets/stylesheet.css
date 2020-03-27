@@ -39,7 +39,11 @@ h2 {
 
 .form-row {
     margin-top: 15px;
-    margin-bottom: 200px;
+    margin-bottom: 10px;
+}
+
+.balko-form-row {
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 768px) {

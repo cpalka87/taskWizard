@@ -44,14 +44,15 @@
         var sizeMessage = size.join('\n');
         var completeMessageBalko = message.join('\n');
         var completeMessageNSB = items.join('\n');
-        completeMessageBalko = ('```' + completeMessageBalko + '```')
+        var completeMessageBalkoIndex = ('```' + completeMessageBalko + '```')
         completeMessageNSB = ('```' + completeMessageNSB + '```')
         productName = ('```' + productName + '```')
         domain = ('```' + domain + '```')
         $('#variants-box').text(varMessage)
         $('#size').text(sizeMessage)
+        $('#balko-variants-box').text(completeMessageBalko)
         taskBuilder()
-        webhookMessage(completeMessageBalko, domain, productName);
+        webhookMessage(completeMessageBalkoIndex, domain, productName);
         webhookMessage(completeMessageNSB, domain, productName);
       });
     } 
@@ -113,6 +114,15 @@
                 <i class="far fa-clipboard"></i>
               </span> 
               <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
+            </div>
+          </div>
+          <div class="form-row balko-form-row">
+            <div class="col">
+              <label for="balkoVariants">Variants:</label>
+              <span class="copy-icon" onclick="clipBoard('balko-variants-box')">
+                <i class="far fa-clipboard"></i>
+              </span> 
+              <textarea class ="form-control" id="balko-variants-box" rows="10" cols="10"></textarea>
             </div>
           </div>
         </div>
