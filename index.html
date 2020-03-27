@@ -51,36 +51,40 @@
         $('#variants-box').text(varMessage)
         $('#size').text(sizeMessage)
         taskBuilder()
-        webhookMessage(completeMessageBalko, domain, productName);
-        webhookMessage(completeMessageNSB, domain, productName);
+        // webhookMessage(completeMessageBalko, domain, productName);
+        // webhookMessage(completeMessageNSB, domain, productName);
       });
     } 
   }
+  $(".reset").click(function() {
+    $(this).closest('form').find("input[type=text], textarea").val("");
+  });
   </script>
+  
 
     <h1 id ="title">DonkWizard</h1>
 
+    <form id="myForm">
     <div class="container">
-          <h2>VariantBuilder</h2>
-        <form>
-          <div class="form-group" id="myForm">
-            <div class="row">
-              <div class="col">
-                <label for="site-url">Insert product URL</label>
-                <textarea class="form-control" id="site-url" rows="1" placeholder="Paste product URL here"></textarea>
-              </div>
-            </div>
-              <div class="row">
-                <div class="col">
-                  <label for="site-box">Insert site name</label>
-                  <textarea class="form-control" id="site-box" rows="1" placeholder=" Enter site name exactly how it appears in bot if building task"></textarea>
-                </div>
-              </div>
+      <h2>VariantBuilder</h2>
+      <div class="form-group" id="myForm">
+        <div class="row">
+          <div class="col">
+            <label for="site-url">Insert product URL</label>
+            <textarea class="form-control" id="site-url" rows="1" placeholder="Paste product URL here"></textarea>
           </div>
+        </div>
+          <div class="row">
+            <div class="col">
+              <label for="site-box">Insert site name</label>
+              <textarea class="form-control" id="site-box" rows="1" placeholder=" Enter site name exactly how it appears in bot if building task"></textarea>
+            </div>
+          </div>
+      </div>
           <div class="row">
             <div class="col button-url-submit">
               <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="validateSiteURL()">Build</button>
-              <!-- <button type="button" id="button-clear" class="btn-lg btn-danger" value="Clear" onclick="clearFields()">Clear</button> -->
+              <button type="button reset" id="button-clear" class="btn-lg btn-danger" value="Clear">Clear</button>
             </div>
             <div class="col button-copy">
               <button type="button" id="button-save" class="btn-lg btn-primary" onclick="validateOutput()">Download</button>
@@ -111,8 +115,8 @@
               <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+    </form>
     <script>$('#variants-box').attr('placeholder', 'If just building task, enter site name above and paste each variant on a new line here' + '\n' + '\n' + '(example)' + '\n' + '12345678912345' + '\n'+ '12345678912345' + '\n'+ '12345678912345' + '\n');</script>
 
   </body>
