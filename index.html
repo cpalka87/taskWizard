@@ -31,7 +31,7 @@
     if (domain !== undefined) {
 
       $.getJSON(`https://${domain}/products.json`, function( data ) {  
-        var regex = new RegExp(`\\b(\\w*${handle}\\w*)\\b`)
+        var regex = new RegExp(`\^${handle}\$`)
         var items = [];
         var size = [];
         var message = [];
@@ -42,7 +42,7 @@
             for (var j = 0; j < currentProduct[i].variants.length; j++)
             if (currentProduct[i].handle.match(regex)) {
               productName = currentProduct[i].handle;
-              if ((currentProduct[i].variants[j].option1).match(/[0-9]/)) {
+              if ((currentProduct[i].variants[j].option1).match(/[0-9]/) && domain !== 'bdgastore.com') {
                 message.push(currentProduct[i].variants[j].option1.slice(0, 7).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
                 size.push(currentProduct[i].variants[j].option1.slice(0, 7).replace(/[^0-9\.]+/g, ''));
               } else {
