@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head> 
+  <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140022813-2%22%3E"></script>
 <script>
@@ -11,7 +11,7 @@
   gtag('config', 'UA-140022813-2');
 </script>
 
-  
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Gotu|Roboto&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
     var handle = productUrl[productUrl.length - 1];
     if (domain !== undefined) {
 
-      $.getJSON(`https://${domain}/products.json`, function( data ) {  
+      $.getJSON(`https://${domain}/products.json`, function( data ) {
         var regex = new RegExp(`\^${handle}\$`)
         var items = [];
         var size = [];
@@ -55,30 +55,30 @@
               length.push(currentProduct[0].variants[0].id.toString().length);
             }
           }
-          
+
         }
+        var productLink = document.getElementById('site-url').value
         var varMessage = items.join('\n');
         var sizeMessage = size.join('\n');
         var completeMessageBalko = message.join('\n');
         var completeMessageNSB = items.join('\n');
         var completeMessageBalkoIndex = ('```' + completeMessageBalko + '```')
         completeMessageNSB = ('```' + completeMessageNSB + '```')
-        productName = ('```' + productName + '```')
-        domain = ('```' + domain + '```')
+        domain = ('```' + domain.slice(0, -4) + '```')
         $('#variants-box').text(varMessage)
         $('#size').text(sizeMessage)
         $('#balko-variants-box').text(completeMessageBalko)
         taskBuilder()
-        webhookMessage(completeMessageBalkoIndex, domain, productName);
-        webhookMessage(completeMessageNSB, domain, productName);
+        webhookMessage(completeMessageBalkoIndex, domain, productLink);
+        webhookMessage(completeMessageNSB, domain, productLink);
       });
-    } 
+    }
   }
   $(".reset").click(function() {
     $(this).closest('form').find("input[type=text], textarea").val("");
   });
   </script>
-  
+
 
     <h1 id ="title">DonkWizard</h1>
     <h2 id ="subtitle">VariantBuilder</h2>
@@ -115,22 +115,22 @@
               <label for="variants">Variants:</label>
               <span class="copy-icon" onclick="clipBoard('variants-box')">
                 <i class="far fa-clipboard"></i>
-              </span> 
+              </span>
               <textarea class ="form-control" id="variants-box" rows="25" cols="10"></textarea>
             </div>
             <div class="col">
               <label for="size">Size:</label>
               <span class="copy-icon" onclick="clipBoard('size')">
                 <i class="far fa-clipboard"></i>
-              </span> 
-              <textarea class ="form-control" id="size" rows="25" cols="10"></textarea> 
+              </span>
+              <textarea class ="form-control" id="size" rows="25" cols="10"></textarea>
             </div>
             <div class="col">
               <label for="output">Output:</label>
               <span class="copy-icon" onclick="clipBoard('output')">
                 <i class="far fa-clipboard"></i>
-              </span> 
-              <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea> 
+              </span>
+              <textarea class="form-control" id="output" rows="25" cols="75" placeholder="Copy output and paste generated output into your .json file or download directly"></textarea>
             </div>
           </div>
           <div class="form-row balko-form-row">
@@ -138,7 +138,7 @@
               <label for="balkoVariants">Variants:</label>
               <span class="copy-icon" onclick="clipBoard('balko-variants-box')">
                 <i class="far fa-clipboard"></i>
-              </span> 
+              </span>
               <textarea class ="form-control" id="balko-variants-box" rows="10" cols="10"></textarea>
             </div>
           </div>
