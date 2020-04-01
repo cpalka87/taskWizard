@@ -2,12 +2,19 @@ function taskBuilder() {
   var variants = document.getElementById('variants-box').value;
   variants = variants.split('\n');
   var siteName = document.getElementById('site-box').value;
+  var siteURL = document.getElementById('site-url').value;
+  siteURL = siteURL.split('/')
+  if (siteName === 'CustomShopify') {
+    var url = `https://${siteURL[2]}/`
+  } else {
+    url = null
+  }
   var result = [];
   var resultFinal = [];
     for (var i = 0; i < variants.length; i++) {
       var variant = variants[i]
       var newObj = {
-        "site": `${siteName}`,
+        "site": siteName,
         "method": `web`,
         "url": null,
         "keywords": null,
@@ -25,7 +32,7 @@ function taskBuilder() {
         "force_captcha": false,
         "color": null,
         "category": "",
-        "site_url": null,
+        "site_url": url,
         "payver": null,
         "dateOfBirth": null,
         "queueMode": true,
@@ -35,7 +42,7 @@ function taskBuilder() {
       }
       result.push(newObj)
     }
-  
+
   for (var i = 0; i < result.length; i++) {
     resultFinal.push(result[i]);
   }
@@ -105,7 +112,7 @@ function saveTextAsFile(textToWrite, fileNameToSaveAs) {
   downloadLink.style.display = "none";
   document.body.appendChild(downloadLink);
   }
-   
+
   downloadLink.click();
 }
 
