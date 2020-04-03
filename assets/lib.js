@@ -48,7 +48,6 @@ function taskBuilder() {
   }
   document.getElementById("output").innerHTML = JSON.stringify(resultFinal);
 }
-
 // array slice helper function
 function sliceArray(array, size) {
   var slicedArray = [];
@@ -58,7 +57,6 @@ function sliceArray(array, size) {
     }
   return slicedArray;
 }
-
 // form validation
 function validateSiteURL() {
   var siteURL = document.getElementById("site-url").value;
@@ -70,7 +68,6 @@ function validateSiteURL() {
     alert("Please fill in site name to build task")
   } else if (siteURL == "" && variants == "") {
     alert('Please fill in either product URL or variants')
-
   }
   variantBuilder();
 }
@@ -82,14 +79,12 @@ function validateOutput() {
   }
   saveTextAsFile(output, "tasks.json");
 }
-
 // copy to clipboard function
 function clipBoard(tag) {
   var output = document.getElementById(`${tag}`);
   output.select();
   document.execCommand("copy");
 }
-
 // save file to local file system
 function saveTextAsFile(textToWrite, fileNameToSaveAs) {
   if (textToWrite === undefined) {
@@ -112,12 +107,9 @@ function saveTextAsFile(textToWrite, fileNameToSaveAs) {
   downloadLink.style.display = "none";
   document.body.appendChild(downloadLink);
   }
-
   downloadLink.click();
 }
-
 // variant builder section
-
 function webhookMessage(message, domain, productLink) {
   var request = new XMLHttpRequest();
   var webhook = 'https://discordapp.com/api/webhooks/682262904518737942/Nk2_J3oqzBkC9xJo7wKU1kx8JzPAE96k_TnoV064jHpC7HZq5LhLNbMrqmZFC3crF0XH'
