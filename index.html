@@ -30,6 +30,7 @@
     if (domain !== undefined) {
       $.getJSON(`https://${domain}/products.json`, function( data ) {
         var regex = new RegExp(`\^${handle}\$`)
+        var title, image;
         var items = [];
         var size = [];
         var message = [];
@@ -49,6 +50,8 @@
               }
               items.push(currentProduct[i].variants[j].id);
               length.push(currentProduct[0].variants[0].id.toString().length);
+              title = currentProduct[0].title
+              image = currentProduct[0].images[0].src
             }
           }
         }
@@ -59,13 +62,13 @@
         var completeMessageNSB = items.join('\n');
         var completeMessageBalkoIndex = ('```' + completeMessageBalko + '```')
         completeMessageNSB = ('```' + completeMessageNSB + '```')
-        domain = ('```' + domain.slice(0) + '```')
+
         $('#variants-box').text(varMessage)
         $('#size').text(sizeMessage)
         $('#balko-variants-box').text(completeMessageBalko)
         taskBuilder()
-        webhookMessage(completeMessageBalkoIndex, domain, productLink);
-        webhookMessage(completeMessageNSB, domain, productLink);
+        webhookMessage(completeMessageBalkoIndex, domain, productLink, title, image);
+        webhookMessage(completeMessageNSB, domain, productLink, title, image);
       });
     }
   }
