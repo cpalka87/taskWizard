@@ -138,25 +138,20 @@ function webhookMessage(message, domain, productLink, title, image) {
         }
       ]
     }]
-    // content: `__**${domain}${productLink}**__${message}`
   }
-  // }
   request.send(JSON.stringify(params));
 }
 
+var shuffle = function() {
+  var randomIndex, randomItemIndex
+  var str = document.getElementById("proxy-randomizer-box").value;
+  str = str.split('\n')
+  for (var i = str.length - 1; i >= 0; i--) {
+    randomIndex = Math.floor(Math.random() * (i + 1));
+    randomItemIndex = str[randomIndex];
+    str[randomIndex] = str[i];
+    str[i] = randomItemIndex;
+  }
+  document.getElementById("proxy-randomizer-output").innerHTML = str.join('\n');
+};
 
-// "thumbnail": {
-//   "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/4-Nature-Wallpapers-2014-1_ukaavUI.jpg"
-// }
-// var param = {
-//   "embeds": [
-//     {
-//       "title": "Meow!",
-//       "color": 1127128
-//     },
-//     {
-//       "title": "Meow-meow!",
-//       "color": 14177041
-//     }
-//   ]
-// }

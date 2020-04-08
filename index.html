@@ -137,6 +137,24 @@
               <textarea class ="form-control" id="balko-variants-box" rows="10" cols="10"></textarea>
             </div>
           </div>
+          <div class="row">
+            <div class="col button-url-submit">
+              <button type="button" id="button-url-submit" class="btn-lg btn-primary" value="Submit" onclick="shuffle()">Randomize</button>
+            </div>
+          </div>
+          <div class="form-row proxy-form-row">
+            <div class="col">
+              <label for="proxy-randomizer">Proxy Randomizer:</label>
+              <textarea class ="form-control" id="proxy-randomizer-box" rows="10" cols="10"></textarea>
+            </div>
+            <div class="col">
+              <label for="proxy-randomizer-output">Output:</label>
+              <span class="copy-icon" onclick="clipBoard('proxy-randomizer-output')">
+              <i class="far fa-clipboard"></i>
+              </span>
+              <textarea class ="form-control" id="proxy-randomizer-output" rows="10" cols="10"></textarea>
+            </div>
+          </div>
         </div>
     </form>
     <script>$('#variants-box').attr('placeholder', 'If just building task, enter site name above and paste each variant on a new line here' + '\n' + '\n' + '(example)' + '\n' + '12345678912345' + '\n'+ '12345678912345' + '\n'+ '12345678912345' + '\n');</script>
