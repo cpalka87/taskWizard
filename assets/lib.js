@@ -144,7 +144,7 @@ function webhookMessage(message, domain, productLink, title, image) {
 
 var shuffle = function() {
   var randomIndex, randomItemIndex
-  var str = document.getElementById("proxy-randomizer-box").value;
+  var str = document.getElementById("variants-box").value;
   str = str.split('\n')
   for (var i = str.length - 1; i >= 0; i--) {
     randomIndex = Math.floor(Math.random() * (i + 1));
@@ -152,6 +152,14 @@ var shuffle = function() {
     str[randomIndex] = str[i];
     str[i] = randomItemIndex;
   }
-  document.getElementById("proxy-randomizer-output").innerHTML = str.join('\n');
+  document.getElementById("output").innerHTML = str.join('\n');
 };
 
+function radioToggle() {
+  var isChecked = document.getElementById("proxy-checked").checked;
+  if (isChecked) {
+    shuffle();
+  } else {
+    validateSiteURL();
+  }
+}
