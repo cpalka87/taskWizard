@@ -41,6 +41,8 @@
             for (var j = 0; j < currentProduct[i].variants.length; j++)
             if (currentProduct[i].handle.match(regex)) {
               productName = currentProduct[i].handle;
+              title = currentProduct[i].title
+              image = currentProduct[i].images[0].src
               if ((currentProduct[i].variants[j].option1).match(/[0-9]/) && domain !== 'bdgastore.com') {
                 message.push(currentProduct[i].variants[j].option1.slice(0, 7).replace(/[^0-9\.]+/g, '') + ' - ' + currentProduct[i].variants[j].id);
                 size.push(currentProduct[i].variants[j].option1.slice(0, 7).replace(/[^0-9\.]+/g, ''));
@@ -50,8 +52,6 @@
               }
               items.push(currentProduct[i].variants[j].id);
               length.push(currentProduct[0].variants[0].id.toString().length);
-              title = currentProduct[0].title
-              image = currentProduct[0].images[0].src
             }
           }
         }
