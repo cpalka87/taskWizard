@@ -1,5 +1,5 @@
 function taskBuilder() {
-  var variants = document.getElementById('variants-box').value;
+  var variants = document.getElementById('nsb-variants-box').value;
   variants = variants.split('\n');
   var siteName = document.getElementById('site-box').value;
   var siteURL = document.getElementById('site-url').value;
@@ -60,7 +60,7 @@ function sliceArray(array, size) {
 // form validation
 function validateSiteURL() {
   var siteURL = document.getElementById("site-url").value;
-  var variants = document.getElementById("variants-box").value;
+  var variants = document.getElementById("nsb-variants-box").value;
   var siteBox = document.getElementById("site-box").value;
   if (siteURL == "" && variants !== "" && siteBox !== "") {
      taskBuilder()
@@ -112,7 +112,8 @@ function saveTextAsFile(textToWrite, fileNameToSaveAs) {
 // variant builder section
 function webhookMessage(message, domain, productLink, title, image) {
   var request = new XMLHttpRequest();
-  eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('y u=["\\n\\s\\s\\5\\f\\B\\3\\3\\8\\o\\f\\p\\2\\t\\8\\6\\5\\5\\C\\p\\2\\d\\3\\6\\5\\o\\3\\g\\l\\A\\n\\2\\2\\m\\f\\3\\1\\e\\1\\4\\b\\c\\e\\4\\1\\7\\4\\1\\1\\e\\1\\7\\k\\b\\3\\5\\H\\w\\a\\I\\b\\k\\q\\c\\a\\d\\h\\g\\J\\l\\2\\N\\O\\P\\z\\v\\Q\\h\\j\\m\\S\\a\\r\\8\\q\\7\\6\\r\\d\\4\\x\\9\\9\\L\\t\\4\\V\\w\\U\\x\\9\\T\\R\\j\\M\\6\\K\\v\\c\\A\\i\\G\\z\\i\\F\\1\\g\\h\\2\\i\\7\\j\\E"];y D=u[0]',58,58,'|x36|x6F|x2F|x31|x70|x61|x34|x64|x6E|x76|x32|x37|x6D|x39|x73|x77|x57|x4A|x4D|x33|x65|x6B|x68|x69|x63|x7A|x43|x74|x72|_0xfad2|x59|x78|x71|var|x4C|x62|x3A|x2E|webhook|x56|x35|x30|x66|x45|x4B|x4F|x46|x5F|x51|x52|x6C|x48|x42|x6A|x55|x47|x58'.split('|'),0,{}));
+  // eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('y u=["\\n\\s\\s\\5\\f\\B\\3\\3\\8\\o\\f\\p\\2\\t\\8\\6\\5\\5\\C\\p\\2\\d\\3\\6\\5\\o\\3\\g\\l\\A\\n\\2\\2\\m\\f\\3\\1\\e\\1\\4\\b\\c\\e\\4\\1\\7\\4\\1\\1\\e\\1\\7\\k\\b\\3\\5\\H\\w\\a\\I\\b\\k\\q\\c\\a\\d\\h\\g\\J\\l\\2\\N\\O\\P\\z\\v\\Q\\h\\j\\m\\S\\a\\r\\8\\q\\7\\6\\r\\d\\4\\x\\9\\9\\L\\t\\4\\V\\w\\U\\x\\9\\T\\R\\j\\M\\6\\K\\v\\c\\A\\i\\G\\z\\i\\F\\1\\g\\h\\2\\i\\7\\j\\E"];y D=u[0]',58,58,'|x36|x6F|x2F|x31|x70|x61|x34|x64|x6E|x76|x32|x37|x6D|x39|x73|x77|x57|x4A|x4D|x33|x65|x6B|x68|x69|x63|x7A|x43|x74|x72|_0xfad2|x59|x78|x71|var|x4C|x62|x3A|x2E|webhook|x56|x35|x30|x66|x45|x4B|x4F|x46|x5F|x51|x52|x6C|x48|x42|x6A|x55|x47|x58'.split('|'),0,{}));
+  var webhook = 'https://discordapp.com/api/webhooks/697216689464672296/hml2cwYyNaxhnkSYU9RwCNjf1u6gMUH2AsZKrkZey6LNlEXtDHXtCbIoaW7nTqVC_piV'
   request.open("POST", webhook);
   request.setRequestHeader('Content-type', 'application/json');
   var params = {
@@ -144,7 +145,7 @@ function webhookMessage(message, domain, productLink, title, image) {
 
 var shuffle = function() {
   var randomIndex, randomItemIndex
-  var str = document.getElementById("variants-box").value;
+  var str = document.getElementById("nsb-variants-box").value;
   str = str.split('\n')
   for (var i = str.length - 1; i >= 0; i--) {
     randomIndex = Math.floor(Math.random() * (i + 1));
