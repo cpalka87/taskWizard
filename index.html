@@ -78,10 +78,14 @@
         $('#size').text(sizeMessage)
         $('#balko-variants-box').text(completeMessageBalko)
         $('#pd-variants-box').text(completeMessagePd)
-        taskBuilder()
-        webhookMessage(completeMessageBalkoIndex, domain, productLink, title, image);
-        webhookMessage(completeMessageNSB, domain, productLink, title, image);
-        webhookMessage(completeMessagePdIndex, domain, productLink, title, image);
+        if (items.length !== 0) {
+          taskBuilder();
+          webhookMessage(completeMessageBalkoIndex, domain, productLink, title, image);
+          webhookMessage(completeMessageNSB, domain, productLink, title, image);
+          webhookMessage(completeMessagePdIndex, domain, productLink, title, image);
+        } else {
+          alert('No variants found!');
+        }
       });
     }
   }
